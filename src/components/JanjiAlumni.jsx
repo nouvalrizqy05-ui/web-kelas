@@ -5,7 +5,7 @@ const JanjiAlumni = () => {
     "Senantiasa bertaqwa kepada Allah SWT. dengan mengamalkan syariat islam.",
     "Berperan aktif dalam mewujudkan cita-cita pembangunan Nasional.",
     "Selalu berusaha mengembangkan ilmu pengetahuan dan teknologi serta mengabdikannya kepada masyarakat sesuai dengan kaidah, norma, dan etika.",
-    "Mengutamakan kepentingan islam, Bangsa dan Negara diatas kepentingan pribadi."
+    "Mengutamakan kepentingan islam, Bangsa dan Negara diatas kepentingan pribadi.",
     "Selalu menjaga dan memuja nama baik almamater MTI Pesantren Al-Ishlah Tajug serta menghormati guru-guru kami."
   ];
 
