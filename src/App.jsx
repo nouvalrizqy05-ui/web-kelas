@@ -25,6 +25,8 @@ function App() {
                 <MemberCarousel />
             </div>
 
+			<JanjiAlumni />
+
 			<div id="Mesh1"></div>
 
 
