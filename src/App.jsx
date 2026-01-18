@@ -5,6 +5,7 @@ import FullWidthTabs from "./Pages/Tabs"
 import Footer from "./Pages/Footer"
 import Chat from "./components/ChatAnonim"
 import MemberCarousel from "./components/MemberCarousel"
+import JanjiAlumni from "./components/JanjiAlumni"
 import AOS from "aos"
 import "aos/dist/aos.css"
 
