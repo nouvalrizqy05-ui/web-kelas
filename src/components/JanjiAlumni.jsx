@@ -2,10 +2,11 @@ import React from "react";
 
 const JanjiAlumni = () => {
   const janjiPoints = [
-    "Menjaga nama baik almamater dan angkatan XII TKJ 3 di manapun berada.",
-    "Terus menjalin tali silaturahmi dan persaudaraan antar sesama alumni.",
-    "Saling membantu dan mendukung dalam perkembangan karir dan kehidupan.",
-    "Menjadi pribadi yang bermanfaat bagi masyarakat, nusa, dan bangsa."
+    "Senantiasa bertaqwa kepada Allah SWT. dengan mengamalkan syariat islam.",
+    "Berperan aktif dalam mewujudkan cita-cita pembangunan Nasional.",
+    "Selalu berusaha mengembangkan ilmu pengetahuan dan teknologi serta mengabdikannya kepada masyarakat sesuai dengan kaidah, norma, dan etika.",
+    "Mengutamakan kepentingan islam, Bangsa dan Negara diatas kepentingan pribadi."
+    "Selalu menjaga dan memuja nama baik almamater MTI Pesantren Al-Ishlah Tajug serta menghormati guru-guru kami."
   ];
 
   return (
@@ -22,7 +23,12 @@ const JanjiAlumni = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 tracking-wider">
             JANJI ALUMNI
           </h2>
-          <div className="h-1 w-24 bg-purple-500 mx-auto rounded-full shadow-[0_0_10px_#a855f7]"></div>
+          <div className="h-1 w-24 bg-purple-500 mx-auto rounded-full shadow-[0_0_10px_#a855f7] mb-6"></div>
+          
+          {/* Kalimat Pengantar */}
+          <p className="text-purple-200/80 text-sm lg:text-base italic font-medium max-w-lg mx-auto leading-relaxed">
+            "Kami Alumni MTI Pesantren Al-Ishlah Tajug dengan penuh kesadaran berjanji:"
+          </p>
         </div>
 
         <div className="space-y-6">
@@ -44,7 +50,7 @@ const JanjiAlumni = () => {
         </div>
 
         <div className="mt-12 text-center text-purple-300 font-mono text-sm tracking-widest opacity-60">
-          — KELUARGA BESAR XII TKJ 3 —
+          — KELUARGA BESAR DIGNIFIED GENERATION —
         </div>
       </div>
     </div>
