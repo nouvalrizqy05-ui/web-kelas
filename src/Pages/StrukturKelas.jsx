@@ -101,7 +101,7 @@ const StrukturKelas = () => {
                             <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Sekretaris</h2>
                             <BorderStruktur Jabatan="" Nama="Muh. Nouval Ar-Rizqy" Width="160px" />
                             <div className="py-1.5"></div>
-                            <BorderStruktur Jabatan="" Nama="Nadzifah Ramadhani G." Width="160px" />
+                            <BorderStruktur Jabatan="" Nama="Nadzifah Ramadhani G." Width="163px" />
                         </div>
                     </div>
 
