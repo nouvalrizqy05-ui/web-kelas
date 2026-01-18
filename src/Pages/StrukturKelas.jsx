@@ -58,7 +58,7 @@ const StrukturKelas = () => {
                         <div className="h-14 w-[3px] bg-gray-500"></div>
                         
                         <div data-aos="fade-right" className="flex flex-col items-center">
-                            <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Ketua & Wakil (PA)</h2>
+                            <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Ketua/Wakil (PA)</h2>
                             <BorderStruktur Jabatan="" Nama="Angga Maulana" Width="150px" />
                             <div className="py-1.5"></div>
                             <BorderStruktur Jabatan="" Nama="Dwi Lingga Febriandi" Width="150px" />
@@ -79,7 +79,7 @@ const StrukturKelas = () => {
                         <div className="h-14 w-[3px] bg-gray-500"></div>
                         
                         <div data-aos="fade-left" className="flex flex-col items-center">
-                            <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Ketua & Wakil (PI)</h2>
+                            <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Ketua/Wakil (PI)</h2>
                             <BorderStruktur Jabatan="" Nama="Syaidatul Amanda" Width="150px" />
                             <div className="py-1.5"></div>
                             <BorderStruktur Jabatan="" Nama="Naura Kaisah M." Width="150px" />
