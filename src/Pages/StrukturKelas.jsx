@@ -23,9 +23,9 @@ const StrukturKelas = () => {
                 <div className="flex flex-col items-center" data-aos="fade-up">
                     {/* Ukuran Font Judul diperbesar (text-lg md:text-xl) */}
                     <h2 className="text-purple-400 font-black mb-4 uppercase tracking-[0.2em] text-lg md:text-xl">Penasihat</h2>
-                    <BorderStruktur Jabatan="" Nama="KH. Muhammad Basuki Adnan, M.Pd." Width="350px" />
+                    <BorderStruktur Jabatan="" Nama="KH. Muhammad Basuki Adnan, M.Pd." Width="250px" />
                     <div className="py-2"></div>
-                    <BorderStruktur Jabatan="" Nama="Ust. Rifki Romdhoni, M.Pd." Width="350px" />
+                    <BorderStruktur Jabatan="" Nama="Ust. Rifki Romdhoni, M.Pd." Width="250px" />
                     
                     {/* Garis dipertebal (w-[3px]) */}
                     <div className="h-14 w-[3px] bg-gray-500 relative">
@@ -36,9 +36,9 @@ const StrukturKelas = () => {
                 <div className="flex flex-col items-center" data-aos="fade-up">
                     <div className="h-14 w-[3px] bg-gray-500"></div>
                     <h2 className="text-purple-400 font-black mb-4 uppercase tracking-[0.2em] text-lg md:text-xl">Generation Guide</h2>
-                    <BorderStruktur Jabatan="" Nama="Ust. Bahrudin Syueb, M.Pd." Width="350px" />
+                    <BorderStruktur Jabatan="" Nama="Ust. Bahrudin Syueb, M.Pd." Width="250px" />
                     <div className="py-2"></div>
-                    <BorderStruktur Jabatan="" Nama="Ust. Lutfi Faisal Hakim, M.E." Width="350px" />
+                    <BorderStruktur Jabatan="" Nama="Ust. Lutfi Faisal Hakim, M.E." Width="250px" />
                     
                     <div className="h-24 w-[3px] bg-gray-500 relative">
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_15px_white]"></div>
@@ -59,9 +59,9 @@ const StrukturKelas = () => {
                         
                         <div data-aos="fade-right" className="flex flex-col items-center">
                             <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Ketua & Wakil (PA)</h2>
-                            <BorderStruktur Jabatan="" Nama="Angga Maulana" Width="220px" />
+                            <BorderStruktur Jabatan="" Nama="Angga Maulana" Width="150px" />
                             <div className="py-1.5"></div>
-                            <BorderStruktur Jabatan="" Nama="Dwi Lingga Febriandi" Width="220px" />
+                            <BorderStruktur Jabatan="" Nama="Dwi Lingga Febriandi" Width="150px" />
                         </div>
                         
                         <div className="h-24 w-[3px] bg-gray-500 relative">
@@ -80,9 +80,9 @@ const StrukturKelas = () => {
                         
                         <div data-aos="fade-left" className="flex flex-col items-center">
                             <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Ketua & Wakil (PI)</h2>
-                            <BorderStruktur Jabatan="" Nama="Syaidatul Amanda" Width="220px" />
+                            <BorderStruktur Jabatan="" Nama="Syaidatul Amanda" Width="150px" />
                             <div className="py-1.5"></div>
-                            <BorderStruktur Jabatan="" Nama="Naura Kaisah Mumtazah" Width="250px" />
+                            <BorderStruktur Jabatan="" Nama="Naura Kaisah M." Width="150px" />
                         </div>
 
                         <div className="h-24 w-[3px] bg-gray-500 relative">
@@ -99,9 +99,9 @@ const StrukturKelas = () => {
                         <div className="h-14 w-[3px] bg-gray-500"></div>
                         <div data-aos="fade-up" className="flex flex-col items-center">
                             <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Sekretaris</h2>
-                            <BorderStruktur Jabatan="" Nama="Muhammad Nouval Ar-Rizqy" Width="280px" />
+                            <BorderStruktur Jabatan="" Nama="Muh. Nouval Ar-Rizqy" Width="160px" />
                             <div className="py-1.5"></div>
-                            <BorderStruktur Jabatan="" Nama="Nadzifah Ramadhani Galbi" Width="280px" />
+                            <BorderStruktur Jabatan="" Nama="Nadzifah Ramadhani G." Width="160px" />
                         </div>
                     </div>
 
@@ -110,9 +110,9 @@ const StrukturKelas = () => {
                         <div className="h-14 w-[3px] bg-gray-500"></div>
                         <div data-aos="fade-up" className="flex flex-col items-center">
                             <h2 className="text-purple-400 font-black mb-3 uppercase tracking-widest text-sm md:text-base">Bendahara</h2>
-                            <BorderStruktur Jabatan="" Nama="Indra Maulana" Width="280px" />
+                            <BorderStruktur Jabatan="" Nama="Indra Maulana" Width="150px" />
                             <div className="py-1.5"></div>
-                            <BorderStruktur Jabatan="" Nama="Siti Solehah" Width="280px" />
+                            <BorderStruktur Jabatan="" Nama="Siti Solehah" Width="150px" />
                         </div>
                     </div>
                 </div>
