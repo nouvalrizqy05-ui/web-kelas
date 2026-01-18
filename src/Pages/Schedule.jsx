@@ -1,97 +1,82 @@
-import React, { useEffect } from "react"
-import AOS from "aos"
-import "aos/dist/aos.css"
-
-const Senin = React.lazy(() => import("../components/Mapel/Senin"))
-const Selasa = React.lazy(() => import("../components/Mapel/Selasa"))
-const Rabu = React.lazy(() => import("../components/Mapel/Rabu"))
-const Kamis = React.lazy(() => import("../components/Mapel/Kamis"))
-const Jumat = React.lazy(() => import("../components/Mapel/Jumat"))
+import React, { useEffect, useState } from "react"
+import Calendar from "react-calendar"
+import { supabase } from "../supabase"
+import "react-calendar/dist/Calendar.css"
+import "./CalendarCustom.css" // Kita akan buat styling custom di bawah
 
 const Schedule = () => {
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    const currentDay = daysOfWeek[new Date().getDay()]
+    const [date, setDate] = useState(new Date())
+    const [agendas, setAgendas] = useState([])
+    const [selectedAgenda, setSelectedAgenda] = useState(null)
 
     useEffect(() => {
-        AOS.init()
-        AOS.refresh()
+        fetchAgendas()
     }, [])
 
-    let piketGroup = []
+    const fetchAgendas = async () => {
+        const { data, error } = await supabase
+            .from("agendas")
+            .select("*")
+        if (data) setAgendas(data)
+    }
 
-    // Menentukan kelompok piket berdasarkan hari
-    piketGroup = [
-        ["Amel", "Helmalia", "Fadli I", "Shera", "Nicollas"],
-        ["Windi", "Lista", "Jeriko", "Pratiwi", "Damar"],
-        ["Putri", "Paulista", "Firdaus", "Attala", "Ardian"],
-        ["Cariska", "Nila", "Wahid", "Togi", "Annisa"],
-        ["Sultan", "Zaini", "Fajri", "Arif"],
-    ]
+    // Fungsi untuk menandai tanggal yang punya agenda
+    const tileContent = ({ date, view }) => {
+        if (view === 'month') {
+            const event = agendas.find(a => 
+                new Date(a.event_date).toDateString() === date.toDateString()
+            )
+            return event ? <div className="h-1.5 w-1.5 bg-purple-400 rounded-full mx-auto mt-1 shadow-[0_0_5px_#c084fc]"></div> : null
+        }
+    }
 
-    const dayComponents = [
-        null, // Kosongkan indeks 0
-        Senin,
-        Selasa,
-        Rabu,
-        Kamis,
-        Jumat,
-    ]
-
-    // Menampilkan komponen berdasarkan hari saat ini
-    const TodayComponent = dayComponents[new Date().getDay()]
-
-    // Menampilkan nama-nama piket sesuai dengan hari saat ini
-    const currentPiketNames = piketGroup[new Date().getDay() - 1]
-
-    console.log("Current Day:", currentDay)
-    console.log("Piket Group:", piketGroup)
-    console.log("Current Piket Names:", currentPiketNames)
+    // Tampilkan detail saat tanggal diklik
+    const handleDateChange = (newDate) => {
+        setDate(newDate)
+        const event = agendas.find(a => 
+            new Date(a.event_date).toDateString() === newDate.toDateString()
+        )
+        setSelectedAgenda(event || null)
+    }
 
     return (
-        <>
-            {/* Jadwal Mapel */}
-            <div className="lg:flex lg:justify-center lg:gap-32 lg:mb-10 lg:mt-16 ">
-                <div className="text-white flex flex-col justify-center items-center mt-8 md:mt-3 overflow-y-hidden">
-                    <div className="text-2xl font-medium mb-5" data-aos="fade-up" data-aos-duration="500">
-                        {currentDay}
-                    </div>
-                    <div data-aos="fade-up" data-aos-duration="400">
-                        {TodayComponent ? (
-                            <React.Suspense fallback={<p>Loading...</p>}>
-                                <TodayComponent />
-                            </React.Suspense>
+        <div className="min-h-screen py-20 px-[5%] lg:px-[15%] text-white" id="Agenda">
+            <h2 className="text-3xl font-bold text-center mb-10" data-aos="fade-up">
+                Agenda Alumni
+            </h2>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                {/* Kalender */}
+                <div className="bg-[#dfdfdf10] backdrop-blur-xl p-6 rounded-2xl border border-purple-400/30 shadow-[0_0_20px_rgba(192,132,252,0.1)]" data-aos="fade-right">
+                    <Calendar 
+                        onChange={handleDateChange} 
+                        value={date}
+                        tileContent={tileContent}
+                        className="custom-calendar"
+                    />
+                </div>
+
+                {/* Detail Agenda */}
+                <div className="space-y-6" data-aos="fade-left">
+                    <div className="bg-[#dfdfdf10] backdrop-blur-xl p-8 rounded-2xl border border-purple-400/30 min-h-[250px] flex flex-col justify-center shadow-[0_0_20px_rgba(192,132,252,0.1)]">
+                        {selectedAgenda ? (
+                            <div>
+                                <span className="text-purple-400 text-sm font-mono mb-2 block">
+                                    {new Date(selectedAgenda.event_date).toLocaleDateString('id-ID', { dateStyle: 'full' })}
+                                </span>
+                                <h3 className="text-2xl font-bold mb-3">{selectedAgenda.title}</h3>
+                                <p className="text-white/60 leading-relaxed">{selectedAgenda.description}</p>
+                            </div>
                         ) : (
-                            <p className="opacity-50">Tidak Ada Jadwal Hari Ini</p>
+                            <div className="text-center italic text-white/40">
+                                <p>Klik pada tanggal untuk melihat agenda</p>
+                                <p className="text-xs mt-2">(Jika ada titik ungu, berarti ada acara!)</p>
+                            </div>
                         )}
                     </div>
                 </div>
             </div>
-
-            {/* Jadwal Piket */}
-            <div className="text-white flex flex-col justify-center items-center mt-8 lg:mt-0 lg:mb-[10rem] mb-10 overflow-y-hidden">
-                <div
-                    className="text-2xl font-medium mb-5 text-center"
-                    data-aos="fade-up"
-                    data-aos-duration="500">
-                    Piket
-                </div>
-                {currentPiketNames && currentPiketNames.length > 0 ? (
-                    currentPiketNames.map((piketName, index) => (
-                        <div
-                            key={index}
-                            className={` border-t-2 border-white flex justify-center py-[0.50rem] w-72 px-3 ${
-                                index === currentPiketNames.length - 1 ? "border-b-2" : ""
-                            }`}
-                            data-aos="fade-up"
-                            data-aos-duration={600 + index * 100}>
-                            <div className="text-base font-medium">{piketName}</div>
-                        </div>
-                    ))
-                ) : (
-                    <p className="opacity-50">Tidak Ada Jadwal Hari Ini</p>
-                )}
-            </div>
-        </>
+        </div>
     )
 }
 
