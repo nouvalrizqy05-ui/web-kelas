@@ -4,11 +4,11 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import ButtonSend from "../components/ButtonSend"
 import ButtonRequest from "../components/ButtonRequest"
-import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage"
+import { supabase } from "../supabase"
 import Modal from "@mui/material/Modal"
-import { Box, IconButton } from "@mui/material"
+import { IconButton } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
-import { useSpring, animated } from "@react-spring/web" // Import the necessary components
+import { useSpring, animated } from "@react-spring/web"
 
 const Carousel = () => {
 	const [images, setImages] = useState([])
@@ -17,32 +17,34 @@ const Carousel = () => {
 
 	const modalFade = useSpring({
 		opacity: open ? 1 : 0,
-		config: { duration: 300 }, // Adjust the duration as needed
+		config: { duration: 300 },
 	})
 
-	// Fungsi untuk mengambil daftar gambar dari Firebase Storage
-	const fetchImagesFromFirebase = async () => {
+	const fetchImagesFromStorage = async () => {
 		try {
-			const storage = getStorage() // Mendapatkan referensi Firebase Storage
-			const storageRef = ref(storage, "GambarAman/") // Menggunakan ref dengan storage
+			const { data, error } = await supabase
+				.storage
+				.from("gallery-images")
+				.list()
 
-			const imagesList = await listAll(storageRef) // Menggunakan listAll untuk mendapatkan daftar gambar
+			if (error) throw error
 
-			const imageURLs = await Promise.all(
-				imagesList.items.map(async (item) => {
-					const url = await getDownloadURL(item) // Menggunakan getDownloadURL untuk mendapatkan URL gambar
-					return url
-				}),
-			)
+			const imageURLs = data.map((file) => {
+				const { data: urlData } = supabase
+					.storage
+					.from("gallery-images")
+					.getPublicUrl(file.name)
+				return urlData.publicUrl
+			})
 
 			setImages(imageURLs)
 		} catch (error) {
-			console.error("Error fetching images from Firebase Storage:", error)
+			console.error("Error fetching images from Storage:", error)
 		}
 	}
 
 	useEffect(() => {
-		fetchImagesFromFirebase()
+		fetchImagesFromStorage()
 	}, [])
 
 	const settings = {
