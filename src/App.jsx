@@ -4,6 +4,7 @@ import Carousel from "./Pages/Gallery"
 import FullWidthTabs from "./Pages/Tabs"
 import Footer from "./Pages/Footer"
 import Chat from "./components/ChatAnonim"
+import MemberCarousel from "./components/MemberCarousel"
 import AOS from "aos"
 import "aos/dist/aos.css"
 
@@ -19,6 +20,10 @@ function App() {
 
 			<Carousel />
 			<FullWidthTabs />
+
+			<div data-aos="fade-up">
+                <MemberCarousel />
+            </div>
 
 			<div id="Mesh1"></div>
 
