@@ -10,7 +10,7 @@ const Footer = () => {
 							<img
 								src="/LogoTKJ3.png"
 								alt=""
-								className="h-[4.5rem] w-[4.5rem] right-2 relative rounded-full brightness-200"
+								className="h-[4.5rem] w-[4.5rem] right-2 relative rounded-full brightness-100"
 							/>
 							<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
 						</a>
@@ -20,13 +20,8 @@ const Footer = () => {
 							<h2 class="mb-4 text-sm font-semibold uppercase text-white">CREATED BY</h2>
 							<ul class="text-gray-400 dark:text-gray-400 font-medium">
 								<li class="mb-2">
-									<a href="https://www.instagram.com/ekizr_/?hl=id" class="hover:underline">
-										EKIZR
-									</a>
-								</li>
-								<li>
-									<a href="https://www.instagram.com/dafyall/?hl=id" class="hover:underline">
-										DAFYALL
+									<a href="https://www.instagram.com/nouvalarr_rgh" class="hover:underline">
+										nouvalarr_rgh
 									</a>
 								</li>
 							</ul>
@@ -35,13 +30,13 @@ const Footer = () => {
 							<h2 class="mb-4 text-sm font-semibold uppercase text-white">Follow us</h2>
 							<ul class="text-gray-400 dark:text-gray-400 font-medium">
 								<li class="mb-2">
-									<a href="https://www.instagram.com/acetkjthree/?hl=id" class="hover:underline ">
+									<a href="https://www.instagram.com/digni.fiedgeneration?igsh=c2cxcnI2YXhvZTA1" class="hover:underline ">
 										Instagram
 									</a>
 								</li>
 								<li>
-									<a href="https://www.youtube.com/@11TKJ3" class="hover:underline">
-										Youtube
+									<a href="https://whatsapp.com/channel/0029VbAPfHs7Noa10rx8q43Q">
+										Saluran WA
 									</a>
 								</li>
 							</ul>
@@ -60,7 +55,7 @@ const Footer = () => {
 				<div class="sm:flex sm:items-center sm:justify-between">
 					<div class="flex mt-4 justify-center sm:mt-0">
 						<p className="text-[0.7rem] text-white opacity-70">
-							© {new Date().getFullYear()} Kelas XII TKJ 3 | Di Kelola Oleh Siswa TKJ 3
+							© {new Date().getFullYear()} Dignified Generation | Di Kelola Oleh Alumni G-XXI Pesantren Al Ishlah Tajug
 						</p>
 					</div>
 				</div>
