@@ -42,7 +42,7 @@ const Schedule = () => {
     return (
         <div className="min-h-screen py-20 px-[5%] lg:px-[15%] text-white" id="Agenda">
             <h2 className="text-3xl font-bold text-center mb-10" data-aos="fade-up">
-                Agenda Alumni
+                Agenda
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
