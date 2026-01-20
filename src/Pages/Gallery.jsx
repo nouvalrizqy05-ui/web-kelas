@@ -21,7 +21,6 @@ const Carousel = () => {
     config: { duration: 300 },
   });
 
-  // Mengambil data dari Tabel Database, bukan List Storage langsung
   const fetchImagesFromDatabase = async () => {
     try {
       const { data, error } = await supabase
@@ -39,7 +38,6 @@ const Carousel = () => {
   useEffect(() => {
     fetchImagesFromDatabase();
 
-    // Opsional: Realtime update jika ada yang upload foto baru
     const channel = supabase
       .channel("gallery_changes")
       .on("postgres_changes", { event: "INSERT", schema: "public", table: "gallery" }, (payload) => {
@@ -56,10 +54,26 @@ const Carousel = () => {
     slidesToShow: images.length > 3 ? 3 : images.length,
     slidesToScroll: 1,
     autoplay: true,
-    dots: true,
+    dots: true, // Dots aktif di desktop
     responsive: [
-      { breakpoint: 768, settings: { slidesToShow: 1, centerPadding: "50px", arrows: false } },
-      { breakpoint: 480, settings: { slidesToShow: 1, centerPadding: "20px", arrows: false } },
+      { 
+        breakpoint: 768, 
+        settings: { 
+          slidesToShow: 1, 
+          centerPadding: "50px", 
+          arrows: false,
+          dots: false // REVISI: Dots dihilangkan di tablet/mobile
+        } 
+      },
+      { 
+        breakpoint: 480, 
+        settings: { 
+          slidesToShow: 1, 
+          centerPadding: "20px", 
+          arrows: false,
+          dots: false // REVISI: Dots dihilangkan di HP kecil
+        } 
+      },
     ],
   };
 
@@ -77,14 +91,14 @@ const Carousel = () => {
                 <img
                   src={url}
                   alt={`Gallery ${index}`}
-                  className="rounded-xl cursor-pointer hover:opacity-80 transition-opacity w-full h-64 object-cover"
+                  className="rounded-xl cursor-pointer hover:opacity-80 transition-opacity w-full h-64 object-cover border border-white/10 shadow-[0_0_15px_rgba(192,132,252,0.1)]"
                   onClick={() => { setSelectedImage(url); setOpen(true); }}
                 />
               </div>
             ))}
           </Slider>
         ) : (
-          <p className="text-center text-white/40">Belum ada foto kenangan.</p>
+          <p className="text-center text-white/40 italic">Belum ada foto kenangan.</p>
         )}
       </div>
 
@@ -93,15 +107,26 @@ const Carousel = () => {
         <ButtonRequest />
       </div>
 
-      <Modal open={open} onClose={() => setOpen(false)} className="flex justify-center items-center p-4">
+      <Modal open={open} onClose={() => setOpen(false)} className="flex justify-center items-center p-4 backdrop-blur-sm">
         <animated.div style={modalFade} className="relative outline-none">
           <IconButton
             onClick={() => setOpen(false)}
-            sx={{ position: "absolute", top: -40, right: 0, color: "white" }}
+            sx={{ 
+                position: "absolute", 
+                top: -45, 
+                right: 0, 
+                color: "white",
+                bgcolor: "rgba(255,255,255,0.1)",
+                '&:hover': { bgcolor: "rgba(255,255,255,0.2)" }
+            }}
           >
             <CloseIcon />
           </IconButton>
-          <img src={selectedImage} alt="Preview" className="max-w-full max-h-[85vh] rounded-lg shadow-2xl" />
+          <img 
+            src={selectedImage} 
+            alt="Preview" 
+            className="max-w-[95vw] max-h-[80vh] rounded-lg shadow-[0_0_30px_rgba(168,85,247,0.4)] border border-white/20" 
+          />
         </animated.div>
       </Modal>
     </>
